@@ -1,0 +1,21 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core"
+         xmlns:st="jelly:stapler"
+         xmlns:d="jelly:define"
+         xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson"
+         xmlns:f="/lib/form"
+         xmlns:a="/lib/auth">
+
+    <j:invokeStatic var="descriptors"
+                    method="getCompatibleDeployments"
+                    className="org.openstack.murano.jenkins_plugins.muranoci.deploy.MuranoDeployment">
+
+        <j:arg type="hudson.model.Descriptor" value="${descriptor}"/>
+
+    </j:invokeStatic>
+
+    <f:dropdownDescriptorSelector field="deployment"
+                                  title="${%Deployment Form}"
+                                  descriptors="${descriptors}"/>
+</j:jelly>
