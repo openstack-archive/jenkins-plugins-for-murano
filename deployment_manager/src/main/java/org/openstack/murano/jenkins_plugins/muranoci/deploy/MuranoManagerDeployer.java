@@ -1,5 +1,6 @@
 package org.openstack.murano.jenkins_plugins.muranoci.deploy;
 
+import hudson.EnvVars;
 import hudson.Extension;
 import hudson.Launcher;
 import hudson.model.AbstractBuild;
@@ -34,6 +35,14 @@ public class MuranoManagerDeployer extends Recorder {
             return true;
         }
 
+        try {
+            build.getEnvironment(listener);
+        } catch (IOException e) {
+            e.printStackTrace(listener.error(Messages.MuranoManagerDeployer_EnvironmentException()));
+            build.setResult(Result.FAILURE);
+            return false;
+        }
+
         return true;
     }
 
@@ -56,6 +65,7 @@ public class MuranoManagerDeployer extends Recorder {
             // Indicates that this builder can be used with all kinds of project types
             return true;
         }
+
 
         /**
          * {@inheritDoc}

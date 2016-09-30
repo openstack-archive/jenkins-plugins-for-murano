@@ -7,10 +7,6 @@
          xmlns:f="/lib/form"
          xmlns:a="/lib/auth">
 
-    <f:section title="${%Google Cloud Deployment API}: ${descriptor.displayName}"
-               name="${descriptor.displayName}">
-        <st:include from="${descriptor}"
-                    page="/com/google/jenkins/plugins/manage/AbstractCloudDeploymentDescriptor/global.jelly"/>
-    </f:section>
+
 
 </j:jelly>

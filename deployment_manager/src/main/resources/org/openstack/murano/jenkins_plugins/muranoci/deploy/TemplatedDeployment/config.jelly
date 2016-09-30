@@ -6,33 +6,10 @@
          xmlns:t="/lib/hudson"
          xmlns:f="/lib/form"
          xmlns:a="/lib/auth">
-    <f:section title="Openstack credentials">
-
-        <f:entry title="${%Keystone URL}" field="keystoneURL">
-            <f:textbox/>
-        </f:entry>
-
-        <f:entry title="${%Tenant}" field="tenant">
-            <f:textbox/>
-        </f:entry>
-
-        <f:entry title="${%User}" field="user">
-            <f:textbox/>
-        </f:entry>
-
-        <f:entry title="${%Password}" field="password">
-            <f:password/>
-        </f:entry>
-
-        <f:validateButton
-                title="${%Test Connection}" progress="${%Testing...}"
-                method="testConnection" with="keystoneURL,tenant,user,password" />
-
-    </f:section>
 
     <f:entry title="${%Application Object Model}" field="objectModel">
-        <f:textarea/>
+        <f:textarea>
+        </f:textarea>
     </f:entry>
-
 
 </j:jelly>

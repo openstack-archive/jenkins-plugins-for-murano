@@ -7,10 +7,8 @@
          xmlns:f="/lib/form"
          xmlns:a="/lib/auth">
 
-    <f:entry title="${%Repository URL}" field="host" >
+    <f:entry title="${%Environment name}" field="environment" >
         <f:textbox />
     </f:entry>
-
-    <f:checkbox title="Tear down" field="action"></f:checkbox>
 
 </j:jelly>

@@ -19,9 +19,6 @@ public abstract class AbstractMuranoDeploymentDescriptor
      */
     @Override
     public boolean configure(StaplerRequest req, JSONObject json) throws FormException {
-        json = json.getJSONObject(getDisplayName());
-//        rootUrl = json.getString("rootUrl");
-//        servicePath = json.getString("servicePath");
         save();
         return true;
     }

@@ -7,6 +7,11 @@
          xmlns:f="/lib/form"
          xmlns:a="/lib/auth">
 
-    <f:labelText>Not implemented.</f:labelText>
+    <f:entry name="action" title="${%Action}" field="action">
+        <select name="action">
+            <option value="teardownAction">${%Tear Down}</option>
+            <option value="doNothingAction">${%Do Nothing}</option>
+        </select>
+    </f:entry>
 
 </j:jelly>
