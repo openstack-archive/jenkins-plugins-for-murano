@@ -1,0 +1,21 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core"
+         xmlns:f="/lib/form"
+         xmlns:c="/lib/credentials">
+
+    <f:entry title="${%Openstack Credentials}" field="credentialsId">
+        <c:select/>
+    </f:entry>
+
+    <j:invokeStatic var="descriptors"
+                    method="getCompatibleDeployments"
+                    className="org.openstack.murano.jenkins_plugins.muranoci.deploy.MuranoDeployment">
+
+        <j:arg type="hudson.model.Descriptor" value="${descriptor}"/>
+
+    </j:invokeStatic>
+
+    <f:dropdownDescriptorSelector field="deployment"
+                                  title="${%Deployment Form}"
+                                  descriptors="${descriptors}"/>
+</j:jelly>
