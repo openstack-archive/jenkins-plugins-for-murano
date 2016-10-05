@@ -1,6 +1,5 @@
 package org.openstack.murano.jenkins_plugins.muranoci.deploy;
 
-import hudson.EnvVars;
 import hudson.Extension;
 import hudson.Launcher;
 import hudson.model.AbstractBuild;

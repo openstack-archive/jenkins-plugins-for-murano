@@ -5,13 +5,8 @@ import com.cloudbees.plugins.credentials.CredentialsProvider;
 import com.cloudbees.plugins.credentials.common.StandardCredentials;
 import com.cloudbees.plugins.credentials.common.StandardListBoxModel;
 import com.cloudbees.plugins.credentials.domains.DomainRequirement;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.fasterxml.jackson.dataformat.yaml.YAMLParser;
 import hudson.EnvVars;
 import hudson.Extension;
-import hudson.FilePath;
 import hudson.Launcher;
 import hudson.model.*;
 import hudson.security.ACL;
@@ -19,19 +14,17 @@ import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
 import hudson.util.ListBoxModel;
 import jenkins.model.Jenkins;
-import org.apache.http.impl.client.SystemDefaultCredentialsProvider;
 import org.kohsuke.stapler.AncestorInPath;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.export.Exported;
 import org.openstack.murano.jenkins_plugins.muranoci.deploy.credentials.OpenstackCredentials;
+import org.openstack.murano.jenkins_plugins.muranoci.deploy.repository.RepositoryTemplatedDeployment;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.net.URL;
 import java.security.SecureRandom;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,7 +67,7 @@ public class MuranoManagerBuildWrapper extends BuildWrapper implements Serializa
                     credentials.getPassword().getPlainText(),
                     credentials.getTenant()
             );
-            if (env.containsKey("BUILD_ENVIRONMENT_TIMEOUT")) {
+            if (env.containsKey("BUILD_ENVIRONMENT_TIMEOUT")){
                 int timeout = Integer.parseInt(env.get("BUILD_ENVIRONMENT_TIMEOUT"));
                 helper.setTimeout(timeout);
             }
@@ -82,7 +75,8 @@ public class MuranoManagerBuildWrapper extends BuildWrapper implements Serializa
             //TODO: Remove
             try {
                 ((RepositoryTemplatedDeployment) deployment).readObjectModel(build.getWorkspace());
-            } catch (Exception io) {
+            } catch (Exception io){
+                io.printStackTrace();
             }
 
             String name = generateEnvName();
@@ -91,7 +85,7 @@ public class MuranoManagerBuildWrapper extends BuildWrapper implements Serializa
                     name, deployment.getObjectModel());
 
             boolean result = helper.waitDeploymentResult(envId);
-            if (!result) {
+            if (!result){
                 build.setResult(Result.FAILURE);
             }
         } catch (Exception e) {
@@ -122,7 +116,7 @@ public class MuranoManagerBuildWrapper extends BuildWrapper implements Serializa
 
         return openstackCredentials;
     }
-
+    
     @Exported
     public MuranoDeployment getDeployment() {
         return deployment;
