@@ -1,0 +1,40 @@
+[
+  {
+      "instance": {
+          "name": "DockerTomcat",
+          "assignFloatingIp": true,
+          "keyname": "common",
+          "flavor": "m1.medium",
+          "image": "21f52be4-03fa-4b77-b59c-121f32426849",
+          "availabilityZone": "nova",
+          "?": {
+              "type": "io.murano.resources.LinuxMuranoInstance",
+              "id": "c350d3f6-5d58-44e8-97ce-930f112c7f9e"
+          }
+      },
+      "name": "DockerVM",
+      "?": {
+          "_26411a1861294160833743e45d0eaad9": {
+              "name": "Docker VM Service"
+          },
+          "type": "com.mirantis.docker.DockerStandaloneHost",
+          "id": "2614f193-f13e-42b1-af7e-01729bb5af75"
+      }
+  },
+  {
+      "host":  "2614f193-f13e-42b1-af7e-01729bb5af75",
+      "image": "tutum/tomcat",
+      "name": "Tomcat",
+      "port": 8080,
+      "password": "admin",
+      "publish": true,
+      "?": {
+        "_26411a1861294160833743e45d0eaad9": {
+        "name": "Docker Tomcat"
+      },
+        "type": "com.example.docker.DockerTomcat",
+        "id": "fe26280f-efb4-4f76-addc-b71578d769dc"
+      }
+  }
+]
+

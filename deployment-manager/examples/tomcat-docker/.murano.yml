@@ -1,0 +1,6 @@
+environments:
+    test:
+        modelFile: ./.murano/test.json
+    staging:
+        modelFile: ./.murano/staging.json
+ 
