@@ -1,6 +1,5 @@
 package org.openstack.murano.jenkins_plugins.muranoci.deploy;
 
-import hudson.EnvVars;
 import hudson.Extension;
 import hudson.Launcher;
 import hudson.model.AbstractBuild;
@@ -55,7 +54,7 @@ public class MuranoManagerDeployer extends Recorder {
     }
 
 
-    @Extension
+    @Extension(ordinal = -1.0)
     public static class DescriptorImpl extends BuildStepDescriptor<Publisher> {
         /**
          * {@inheritDoc}

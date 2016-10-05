@@ -29,7 +29,8 @@ public abstract class MuranoDeployment
      *
      * @param objectModel description of environment to be deployed
      */
-    public MuranoDeployment(String objectModel) {
+    public MuranoDeployment(
+            String objectModel) {
 
         this.objectModel = requireNonNull(objectModel, "Object Model should not be Null");
     }
@@ -44,7 +45,8 @@ public abstract class MuranoDeployment
         return Jenkins.getInstance().getDescriptorList(MuranoDeployment.class);
     }
 
-    public static List<AbstractMuranoDeploymentDescriptor> getCompatibleDeployments(Descriptor descriptor) {
+    public static List<AbstractMuranoDeploymentDescriptor> getCompatibleDeployments(
+            Descriptor descriptor) {
         LinkedList<AbstractMuranoDeploymentDescriptor> cloudDeployments =
                 new LinkedList<>();
 
