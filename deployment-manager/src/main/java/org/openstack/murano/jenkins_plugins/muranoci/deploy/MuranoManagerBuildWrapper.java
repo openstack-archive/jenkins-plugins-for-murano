@@ -81,11 +81,9 @@ public class MuranoManagerBuildWrapper extends BuildWrapper implements Serializa
 
             String name = generateEnvName();
 
-            String envId = helper.deployNewFromObjectModel(
-                    name, deployment.getObjectModel());
+            boolean result = helper.deployEnvAndWait(name, deployment.getObjectModel());
 
-            boolean result = helper.waitDeploymentResult(envId);
-            if (!result){
+            if (!result) {
                 build.setResult(Result.FAILURE);
             }
         } catch (Exception e) {
@@ -99,8 +97,8 @@ public class MuranoManagerBuildWrapper extends BuildWrapper implements Serializa
     private String generateEnvName() {
         return MURANO_ENV_NAME + new BigInteger(
                 32,
-                new SecureRandom())
-                .toString(16);
+                new SecureRandom()
+        ).toString(16);
     }
 
     private OpenstackCredentials getOpenstackCredentials(String credentialsId) {
