@@ -79,14 +79,14 @@ public class OpenstackCredentialsImpl extends BaseStandardCredentials implements
                                                @QueryParameter("password") final String password)
                 throws IOException, ServletException {
 
-            MuranoHelper client = new MuranoHelper(
+            MuranoHelper helper = new MuranoHelper(
                     identityServiceEndpoint,
                     username,
                     password,
                     tenant);
 
             try {
-                client.authenticate();
+                helper.authenticate();
             } catch (AuthenticationException ae) {
                 return FormValidation.error(
                         "Unable to connect to server. Please check credentials");

@@ -32,16 +32,26 @@
             <name>Alexey Khivin</name>
             <email>akhivin@gmail.com</email>
         </developer>
+        <developer>
+            <name>Nikolay Mahotkin</name>
+            <email>nmakhotkin@mirantis.com</email>
+        </developer>
     </developers>
 
     <properties>
         <java.level>8</java.level>
         <jenkins.version>2.23</jenkins.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <openstack4jversion>3.0.2</openstack4jversion>
+        <openstack4jversion>3.0.3-SNAPSHOT</openstack4jversion>
+        <openstack4jConnectorVersion>3.0.2</openstack4jConnectorVersion>
     </properties>
 
     <repositories>
+        <repository>
+            <id>st-snapshots</id>
+            <name>sonatype-snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
         <repository>
             <id>repo.jenkins-ci.org</id>
             <name>Jenkins Repository</name>
@@ -103,7 +113,7 @@
         <dependency>
             <groupId>org.pacesys.openstack4j.connectors</groupId>
             <artifactId>openstack4j-httpclient</artifactId>
-            <version>${openstack4jversion}</version>
+            <version>${openstack4jConnectorVersion}</version>
         </dependency>
 
         <dependency>
