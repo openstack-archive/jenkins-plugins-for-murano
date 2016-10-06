@@ -1,0 +1,9 @@
+Code-Review+2: Alexey Khivin <akhivin@gmail.com>
+Code-Review+2: Sergey Kraynev <skraynev@mirantis.com>
+Workflow+1: Sergey Kraynev <skraynev@mirantis.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 06 Oct 2016 15:03:03 +0000
+Reviewed-on: https://review.openstack.org/382891
+Project: openstack/jenkins-plugins-for-murano
+Branch: refs/heads/master
